@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:28:52 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/24 16:44:09 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:04:19 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	find_pb_count(int_lst **A, int pa_count)
 	if (!sorted_arr)
 		return (-1);
 	bubble_sort_arr(sorted_arr, pa_count);
-//	print_int_arr(arr, pa_count);
-//	print_int_arr(sorted_arr, pa_count);
 	i = pa_count - 1;
 	while (i >= 0)
 	{
@@ -150,12 +148,10 @@ int	merge_sortA_to_B(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 
 	size = sub_stack_size_lst[0]->content;
 	median = find_median(*A, size);
-	ft_printf("median = %d\n", median);
 	pb_count = 0;
 	ra_count = 0;
 	operation_count = 0;
 	max_pb = find_max_pb(size); 
-	ft_printf("max_pb = %d\n", max_pb);
 	while (size > 0 && pb_count < max_pb)
 	{
 		if ((*A)->content > median)
@@ -206,7 +202,6 @@ int	sort_B(int_lst **B, int_lst **sub_stack_size_lst, int rb_count, int pa_count
 	int	count;
 	int	prev_sub_stack_size;
 	
-//	ft_printf("rb_count = %d\n", rb_count);
 	prev_sub_stack_size = sub_stack_size_lst[1]->content;
 	count = 0;
 	while (rb_count > 0 && int_lstsize(sub_stack_size_lst[1]) > 1)
@@ -227,19 +222,12 @@ int	merge_sortB_to_A(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 	int	size;
 	int	max_pa;
 
-	print_stacks_both(*A, *B);
-	ft_printf("A sub stack sizes = ");
-	print_stack(sub_stack_size_lst[0]);
-
-
 	size = sub_stack_size_lst[1]->content;
 	median = find_median(*B, size);
-	ft_printf("median = %d\n", median);
 	pa_count = 0;
 	rb_count = 0;
 	operation_count = 0;
 	max_pa = size / 2;
-	ft_printf("max_pa = %d\n", max_pa);
 	while (size > 0 && pa_count < max_pa)
 	{
 		if ((*B)->content > median)
@@ -261,10 +249,6 @@ int	merge_sort(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 	count = 0;
 	while (*B)
 	{
-		print_stacks_both(*A, *B);
-		ft_printf("B sub stack sizes = ");
-		print_stack(sub_stack_size_lst[1]);
-	//	ft_printf("size of B = %d\n", int_lstsize(*B));
 		if ((sub_stack_size_lst[1])->content == 1)
 		{
 			count += pa(A, B);
@@ -311,23 +295,18 @@ int	splitA_to_B(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 			size--;
 		}
 		int_lstadd_front(&sub_stack_size_lst[1], int_lstnew(B_sub_stack_size));
-//		ft_printf("size A = %d\n", int_lstsize(*A));
-		print_stacks_both(*A, *B);
 	}
 	if (int_lstsize(*A) == 3)
 		count += sort_A_top3(A);
 	else if (int_lstsize(*A) == 2)
 		count += sort_A_top2(A);
 	sub_stack_size_lst[0]->content = A_sub_stack_size;
-//	print_stack(sub_stack_size_lst[0]);
-//	print_stack(sub_stack_size_lst[1]);
 	return (count);
 }
 
 void	push_swap(int_lst **A)
 {
 	// rather than finding count manually, create a fn to read how many lines printed to stdoutput
-
 	int_lst	**B;
 	int_lst	*sub_stack_size_lst[2];
 	int		count;
@@ -339,16 +318,8 @@ void	push_swap(int_lst **A)
 	sub_stack_size_lst[0] = int_lstnew(int_lstsize(*A));
 	sub_stack_size_lst[1] = NULL;
 	count = 0;
-//	count += bucket_sort(A, B, sub_stack_size_lst);
 	count += splitA_to_B(A, B, sub_stack_size_lst);
-	ft_printf("\n\n\n BREAK		BREAK \n\n\n\n");
-//	ft_printf("size B = %d\n", int_lstsize(*B));
-//	print_stack(*sub_stack_size_lst);	
 	count += merge_sort(A, B, sub_stack_size_lst);
-	
-	print_stacks_both(*A, *B);
-	ft_printf("no. operations = %d\n\n", count);
-	
 	int_lstclear(&sub_stack_size_lst[0]);
 	int_lstclear(&sub_stack_size_lst[1]);
 	int_lstclear(B);

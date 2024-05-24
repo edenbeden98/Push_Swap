@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:06:50 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/23 17:04:31 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:01:42 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	fill_bucket(int_lst **A, int_lst **B, int bucket_size)
 	arr_size = int_lstsize(*A);
 	arr = int_lst_to_arr(*A, arr_size);
 	bubble_sort_arr(arr, arr_size);
-//	print_int_arr(arr, bucket_size);
 	i = 0;
 	count = 0;
 	while (i < bucket_size)
@@ -67,7 +66,6 @@ int	fill_bucket(int_lst **A, int_lst **B, int bucket_size)
 		rot_count = 0;
 		while (1)
 		{
-		//	write(1, "1\n", 2);
 			if (int_lstsize(*A) == 0)
 				break ;
 			if (intsetcmp(first->content, arr, bucket_size))
@@ -105,14 +103,14 @@ int	bucket_sort(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 	i = 0;
 	while (i < bucket_count - 1)
 	{
-		ft_printf("size B = %d\n", int_lstsize(*B));
+		//ft_printf("size B = %d\n", int_lstsize(*B));
 		count += fill_bucket(A, B, bucket_size);
 		int_lstadd_front(&sub_stack_size_lst[1], int_lstnew(bucket_size));
 		sub_stack_size_lst[0]->content -= bucket_size;
-		ft_printf(" \n\n BREAK \n\n\n");
+		//ft_printf(" \n\n BREAK \n\n\n");
 		i++;
 	}
-	print_stack(sub_stack_size_lst[0]);
-	print_stack(sub_stack_size_lst[1]);
+//	print_stack(sub_stack_size_lst[0]);
+	//print_stack(sub_stack_size_lst[1]);
 	return (count);
 }
