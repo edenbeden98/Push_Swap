@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:28:52 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/24 13:16:56 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:44:09 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ int	find_pb_count(int_lst **A, int pa_count)
 	free(arr);
 	free(sorted_arr);
 	return (i + 1);
+}
+
+int	sort_A_top2(int_lst **A)
+{
+	if ((*A)->content > (*A)->next->content)
+		return (sa(*A));
+	return (0);
 }
 
 int	sort_A_top3(int_lst **A)
@@ -122,7 +129,6 @@ int	sort_B_top3(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 	return (count);
 }
 
-
 int	find_max_pb(int	size)
 {
 	if (size == 1)
@@ -144,11 +150,12 @@ int	merge_sortA_to_B(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 
 	size = sub_stack_size_lst[0]->content;
 	median = find_median(*A, size);
+	ft_printf("median = %d\n", median);
 	pb_count = 0;
 	ra_count = 0;
 	operation_count = 0;
 	max_pb = find_max_pb(size); 
-	//	ft_printf("max_pa = %d\n", max_pa);
+	ft_printf("max_pb = %d\n", max_pb);
 	while (size > 0 && pb_count < max_pb)
 	{
 		if ((*A)->content > median)
@@ -189,8 +196,8 @@ int	sort_A(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst, int pa_count)
 		operation_count += merge_sortA_to_B(A, B, sub_stack_size_lst);
 	if (sub_stack_size_lst[0]->content == 3)
 		operation_count += sort_A_top3(A);
-	else if (sub_stack_size_lst[0]->content == 2 && (*A)->content > (*A)->next->content)
-		operation_count += sa(*A);
+	else if (sub_stack_size_lst[0]->content == 2)
+		operation_count += sort_A_top2(A);
 	return (operation_count);
 }
 
@@ -227,12 +234,12 @@ int	merge_sortB_to_A(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 
 	size = sub_stack_size_lst[1]->content;
 	median = find_median(*B, size);
-//	ft_printf("median = %d\n", median);
+	ft_printf("median = %d\n", median);
 	pa_count = 0;
 	rb_count = 0;
 	operation_count = 0;
 	max_pa = size / 2;
-//	ft_printf("max_pa = %d\n", max_pa);
+	ft_printf("max_pa = %d\n", max_pa);
 	while (size > 0 && pa_count < max_pa)
 	{
 		if ((*B)->content > median)
@@ -241,9 +248,6 @@ int	merge_sortB_to_A(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 			rb_count += rb(B);
 		size--;
 	}
-	
-	// Need to stop auto pb for pa: 4 - 6, and handle those cases separately
-	// split them into, 2:2 2:3, and 3:3 cases
 	operation_count += pa_count + rb_count;
 	operation_count += sort_B(B, sub_stack_size_lst, rb_count, pa_count);	
 	operation_count += sort_A(A, B, sub_stack_size_lst, pa_count);
@@ -308,9 +312,12 @@ int	splitA_to_B(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst)
 		}
 		int_lstadd_front(&sub_stack_size_lst[1], int_lstnew(B_sub_stack_size));
 //		ft_printf("size A = %d\n", int_lstsize(*A));
-//		print_stacks_both(*A, *B);
+		print_stacks_both(*A, *B);
 	}
-	sort_A_top3(A);
+	if (int_lstsize(*A) == 3)
+		count += sort_A_top3(A);
+	else if (int_lstsize(*A) == 2)
+		count += sort_A_top2(A);
 	sub_stack_size_lst[0]->content = A_sub_stack_size;
 //	print_stack(sub_stack_size_lst[0]);
 //	print_stack(sub_stack_size_lst[1]);
@@ -354,14 +361,16 @@ int	main(int argc, char **argv)
 	int_lst	*tmp;
 	int		i;
 
-//	if (!check_input(argc, argv))
-//	{
-//		ft_printf("Error\n");
-//		return (1);
-//	}
+	if (argc < 2)
+		return (1);	
+	if (!check_input(argc, argv))
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	A = malloc(sizeof(int_lst *));
 	if (!A)
-		return (0);
+		return (1);
 	*A = NULL;
 	i = 1;
 	while (i < argc)
@@ -370,10 +379,7 @@ int	main(int argc, char **argv)
 		int_lstadd_back(A, tmp);
 		i++;
 	}
-//	print_stack(*A);
-	
 	push_swap(A);
 	int_lstclear(A);
 	free(A);
 }
-

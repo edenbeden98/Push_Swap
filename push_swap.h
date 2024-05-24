@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:32:54 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/23 10:32:01 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:24:00 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		rev_bubble_sort_arr(int *arr, int size);
 
 void		ft_swap(int *a, int *b);
 
-int			*copy_to_arr(int_lst *X, int size);
+int			*int_lst_to_arr(int_lst *X, int size);
 
 int			rot_n_push(int_lst **A, int_lst **B, int roll_count);
 
@@ -76,6 +76,12 @@ void		print_int_arr(int *arr, int size);
 
 //int			find_next_largest(int_lst *X);
 
+bool		check_input(int argc, char **argv);
 
+bool		check_int_size(int argc, char **argv);
+
+bool		check_all_integers(int argc, char **argv);
+
+int			check_duplicates(int argc, char **argv);
 
 #endif

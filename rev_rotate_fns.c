@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:40:37 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/20 13:31:14 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:49:45 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static void	rev_rotate(int_lst **stack)
 		while (tmp->next->next)
 			tmp = tmp->next;
 		last = tmp->next;
-		
 		int_lstadd_front(stack, int_lstnew(last->content));
 		free(last);
 		tmp->next = NULL;
-	}	
+	}
 }
 
 int	rra(int_lst **A)
