@@ -50,7 +50,7 @@ int	find_max_pb(int size)
 int	find_median(int_lst *x, int size)
 {
 	int	median;
-	int	arr[size];
+	int	arr[1000];
 	int	i;
 
 	i = 0;
@@ -66,4 +66,3 @@ int	find_median(int_lst *x, int size)
 		median = arr[size / 2];
 	return (median);
 }
-
