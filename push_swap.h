@@ -6,82 +6,84 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:32:54 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/24 16:24:00 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/06/12 13:13:34 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 
-# define	PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
 
-int			ra(int_lst **A);
+int		ra(int_lst **A);
 
-int			rb(int_lst **B);
+int		rb(int_lst **B);
 
-int			rr(int_lst **A, int_lst **B);
+int		rr(int_lst **A, int_lst **B);
 
-int			sa(int_lst *A);
+int		sa(int_lst *A);
 
-int			sb(int_lst *B);
+int		sb(int_lst *B);
 
-int			ss(int_lst *A, int_lst *B);
+int		ss(int_lst *A, int_lst *B);
 
-int			pa(int_lst **A, int_lst **B);
+int		pa(int_lst **A, int_lst **B);
 
-int			pb(int_lst **A, int_lst **B);
+int		pb(int_lst **A, int_lst **B);
 
-int			rra(int_lst **A);
+int		rra(int_lst **A);
 
-int			rrb(int_lst **B);
+int		rrb(int_lst **B);
 
-int 		rrr(int_lst **A, int_lst **B);
+int		rrr(int_lst **A, int_lst **B);
 
-int			s_bubble_sort(int_lst **A, int_lst **B);
+int		find_median(int_lst *X, int size);
 
-int			sort(int_lst **A, int_lst **B, int index);
+int		find_pb_count(int_lst **a, int pa_count);
 
-int			find_median(int_lst *X, int size);
+int		find_max_pb(int size);
 
-void		bubble_sort_arr(int *arr, int size);
+void	print_int_arr(int *arr, int size); // ADD TO PRINTF
 
-void		rev_bubble_sort_arr(int *arr, int size);
+void	print_stack(int_lst *X); // ADD TO PRINTF
 
-void		ft_swap(int *a, int *b);
+void	print_stacks_both(int_lst *A, int_lst *B);
 
-int			*int_lst_to_arr(int_lst *X, int size);
+void	print_int_arr(int *arr, int size);
 
-int			rot_n_push(int_lst **A, int_lst **B, int roll_count);
+bool	check_input(int argc, char **argv);
 
-int			rev_rot_n_push(int_lst **A, int_lst **B, int rot_count);
+bool	check_int_size(int argc, char **argv);
 
-int			fill_bucket(int_lst **A, int_lst **B, int bucket_size);
+bool	check_all_integers(int argc, char **argv);
 
-int			bucket_sort(int_lst **A, int_lst **B, int_lst **sub_stack_size_lst);
+int		check_duplicates(int argc, char **argv);
 
-void		print_int_arr(int *arr, int size); // ADD TO LIBFT
+void	sort_a_top2(int_lst **a);
 
-void		print_stack(int_lst *X); // ADD TO LIBFT
+void	sort_a_top3(int_lst **a);
 
-void		print_stacks_both(int_lst *A, int_lst *B);
+void	sort_b_top2(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-void		print_int_arr(int *arr, int size);
+void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-//int			find_next_smallest(int_lst *B);
+void	sort_a(int_lst **a, int_lst **b, int_lst **sub_stacks, int pa_count);
 
-//int			find_next_largest(int_lst *X);
+void	sort_b(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count);
 
-bool		check_input(int argc, char **argv);
+void	push_swap(int_lst **a);
 
-bool		check_int_size(int argc, char **argv);
+void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-bool		check_all_integers(int argc, char **argv);
+void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-int			check_duplicates(int argc, char **argv);
+void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks);
+
+void	split_atob(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 #endif

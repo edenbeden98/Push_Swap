@@ -14,8 +14,6 @@
 
 void	print_stack(int_lst *X)
 {
-	// FOR TESTING ONLY
-
 	while (X)
 	{
 		ft_printf("%d, ", X->content);
@@ -26,8 +24,6 @@ void	print_stack(int_lst *X)
 
 void	print_stacks_both(int_lst *A, int_lst *B)
 {
-	// FOR TESTING ONLY
-
 	ft_printf("A = ");
 	print_stack(A);
 	ft_printf("B = ");
@@ -36,8 +32,6 @@ void	print_stacks_both(int_lst *A, int_lst *B)
 
 void	print_int_arr(int *arr, int size)
 {
-	// FOR TESTING ONLY
-
 	int	i;
 
 	i = 0;

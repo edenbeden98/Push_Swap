@@ -6,7 +6,7 @@
 #    By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 14:21:39 by eamsalem          #+#    #+#              #
-#    Updated: 2024/05/24 17:00:11 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/06/12 16:25:06 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 LIBFTDIR = ../libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-SRCS =	rotate_fns.c \
+SRCS =	push_swap.c \
+		rotate_fns.c \
 		swap_fns.c \
 		rev_rotate_fns.c \
 		push_fns.c \
 		sort_fns.c \
-		push_swap.c	\
-		bucket_sort.c \
+		print_fns.c \
+		find_fns.c \
+		merge_sort_fns.c \
 		check_fns.c
 
 all: $(OBJDIR) $(NAME) $(LIBFT)

@@ -6,89 +6,74 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:28:52 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/23 10:29:09 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/06/12 13:10:17 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	ft_swap(int *a, int *b)
+void	sort_a_top2(int_lst **a)
 {
-	int	c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
+	if ((*a)->content > (*a)->next->content)
+		sa(*a);
 }
 
-void	rev_bubble_sort_arr(int *arr, int size)
+void	sort_a_top3(int_lst **a)
 {
-	int	i;
-	int	swaps;
+	int	top;
+	int	mid;
+	int	bottom;
 
-	while (1)
+	top = (*a)->content;
+	mid = (*a)->next->content;
+	bottom = (*a)->next->next->content;
+	if (top < mid && top < bottom && mid < bottom)
+		return ;
+	else if (top > mid)
+		(sa(*a));
+	if (bottom > mid && bottom > top)
+		return ;
+	ra(a);
+	sa(*a);
+	rra(a);
+	if (mid > top && mid > bottom && top > bottom)
+		sa(*a);
+	else if (top > mid && top > bottom && mid > bottom)
+		sa(*a);
+}
+
+void	sort_b_top2(int_lst **a, int_lst **b, int_lst **sub_stacks)
+{
+	if ((*b)->content < (*b)->next->content)
+		sb(*b);
+	pa(a, b);
+	pa(a, b);
+	int_lstdel_front(&sub_stacks[1]);
+}
+
+void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks)
+{
+	int	top;
+	int	mid;
+	int	bottom;
+
+	top = (*b)->content;
+	mid = (*b)->next->content;
+	bottom = (*b)->next->next->content;
+	if (bottom > top && bottom > mid)
 	{
-		swaps = 0;
-		i = 0;
-		while (i < size - 1)
-		{
-			if (arr[i] < arr[i + 1])
-			{
-				ft_swap(&arr[i], &arr[i + 1]);
-				swaps++;
-			}
-			i++;
-		}
-		if (swaps == 0)
-			break ;
+		pa(a, b);
+		sb(*b);
+		pa(a, b);
+		sa(*a);
+		pa(a, b);
+		if (mid > top)
+			sa(*a);
+		int_lstdel_front(&sub_stacks[1]);
+		return ;
 	}
+	else if (mid > top && mid > bottom)
+		sb(*b);
+	pa(a, b);
+	sort_b_top2(a, b, sub_stacks);
 }
-
-
-void	bubble_sort_arr(int *arr, int size)
-{
-	int	i;
-	int	swaps;
-
-	while (1)
-	{
-		swaps = 0;
-		i = 0;
-		while (i < size - 1)
-		{
-			if (arr[i] > arr[i + 1])
-			{
-				ft_swap(&arr[i], &arr[i + 1]);
-				swaps++;
-			}
-			i++;
-		}
-		if (swaps == 0)
-			break ;
-	}
-}
-
-int	find_median(int_lst *X, int size)
-{
-	int	median;
-	int	arr[size];
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		arr[i++] = X->content;
-		X = X->next;
-	}
-	bubble_sort_arr(arr, size);
-	if (size % 2 == 0)
-		median = arr[(size / 2) - 1];
-//		median = (arr[(size / 2)] + arr[(size / 2) - 1]) / 2;
-	else
-		median = arr[size / 2];
-//	ft_printf("median = %d\n", median);
-	return (median);
-}
-
-
