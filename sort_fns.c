@@ -77,3 +77,25 @@ void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	pa(a, b);
 	sort_b_top2(a, b, sub_stacks);
 }
+
+void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
+{
+	int	size;
+
+	size = find_unordered_count(a, sub_stacks);
+	if (size <= 1)
+		return ;
+	else if (size == 2)
+		sa(*a);
+	else if (size == 3)
+		sort_a_top3(a);
+	else
+	{
+		while (sub_stacks[0]->content > 3)
+			merge_sort_atob(a, b, sub_stacks, false);
+		if (sub_stacks[0]->content == 3)
+			sort_a_top3(a);
+		else if (sub_stacks[0]->content == 2)
+			sort_a_top2(a);
+	}
+}

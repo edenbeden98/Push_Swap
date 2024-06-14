@@ -60,7 +60,7 @@ int	find_median(int_lst *x, int size)
 	//ft_printf("median = %d\n", median);
 	return (median);
 }
-/*
+
 int	find_max_pb(int size)
 {
 	//ft_printf("size = %d\n", size);
@@ -71,4 +71,3 @@ int	find_max_pb(int size)
 	else
 		return ((size / 2) + 1);
 }
-*/

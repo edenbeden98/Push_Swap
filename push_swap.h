@@ -74,8 +74,6 @@ void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-void	sort_b_sub_stack(int_lst **b, int_lst **sub_stacks, int rb_count);
-
 void	push_swap(int_lst **a);
 
 void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_merge);

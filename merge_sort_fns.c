@@ -14,13 +14,15 @@
 
 void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_merge)
 {
+	int	size;
+	int	median;
+	int	max_pb;
 	int	pb_count;
 	int	ra_count;
-	int	median;
-	int	size;
 	
 	size = sub_stacks[0]->content;
 	median = find_median(*a, size);
+	max_pb = find_max_pb(size);
 	pb_count = 0;
 	ra_count = 0;
 	//print_stacks_both(*a, *b);
@@ -28,18 +30,17 @@ void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_
 	//ft_printf("max_pb = %d\n", max_pb);
 	//ft_printf("A = ");
 	//print_stack(*a);
-	while (size > 0/* && pb_count < max_pb*/)
+	while (pb_count < max_pb)
 	{
-		if ((*a)->content < median)
-			pb_count += pb(a, b);
-		else
+		if ((*a)->content > median)
 			ra_count += ra(a);
-		size--;
+		else
+			pb_count += pb(a, b);
 	}
-	int_lstadd_front(&sub_stacks[1], int_lstnew(pb_count));
-	sub_stacks[0]->content = ra_count;
 	while (ra_count > 0 && !first_merge)
 		ra_count -= rra(a);
+	int_lstadd_front(&sub_stacks[1], int_lstnew(pb_count));
+	sub_stacks[0]->content -= pb_count;
 }
 
 void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
@@ -57,13 +58,12 @@ void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	//ft_printf("max_pa = %d\n", max_pa);
 	//ft_printf("B = ");
 	//print_stack(*b);
-	while (size > 0 && pa_count < size / 2)
+	while (pa_count < size / 2)
 	{
 		if ((*b)->content > median)
 			pa_count += pa(a, b);
 		else
 			rb_count += rb(b);
-		size--;
 	}
 	while (rb_count > 0 && int_lstsize(sub_stacks[1]) > 1)
 		rb_count -= rrb(b);
@@ -91,8 +91,6 @@ void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks)
 			sort_b_top3(a, b, sub_stacks);
 		else
 			merge_sort_btoa(a, b, sub_stacks);
-		if (int_lstsize(*b) == 1)
-			pa(a, b);
 	}
 }
 
