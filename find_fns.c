@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_pb_count(int_lst **a, int_lst **sub_stacks)
+int	find_unordered_count(int_lst **a, int_lst **sub_stacks)
 {
 	int	*arr;
 	int	*sorted_arr;
@@ -60,7 +60,7 @@ int	find_median(int_lst *x, int size)
 	//ft_printf("median = %d\n", median);
 	return (median);
 }
-
+/*
 int	find_max_pb(int size)
 {
 	//ft_printf("size = %d\n", size);
@@ -71,3 +71,4 @@ int	find_max_pb(int size)
 	else
 		return ((size / 2) + 1);
 }
+*/

@@ -16,19 +16,19 @@ void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_
 {
 	int	pb_count;
 	int	ra_count;
-	int	max_pb;
 	int	median;
 	int	size;
-
+	
 	size = sub_stacks[0]->content;
 	median = find_median(*a, size);
 	pb_count = 0;
 	ra_count = 0;
-	max_pb = find_max_pb(size);
 	//print_stacks_both(*a, *b);
-	//ft_printf("sub_stack size = %d\n", sub_stacks[0]->content);
+	//ft_printf("A sub stack size = %d\n", sub_stacks[0]->content);
 	//ft_printf("max_pb = %d\n", max_pb);
-	while (size > 0 && pb_count < max_pb)
+	//ft_printf("A = ");
+	//print_stack(*a);
+	while (size > 0/* && pb_count < max_pb*/)
 	{
 		if ((*a)->content < median)
 			pb_count += pb(a, b);
@@ -44,19 +44,20 @@ void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_
 
 void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
 {
+	int	size;
+	int	median;
 	int	pa_count;
 	int	rb_count;
-	int	median;
-	int	size;
-	int	max_pa;
-
+	
 	size = sub_stacks[1]->content;
 	median = find_median(*b, size);
 	pa_count = 0;
 	rb_count = 0;
-	max_pa = size / 2;
+	//ft_printf("B sub stack size = %d\n", sub_stacks[1]->content);
 	//ft_printf("max_pa = %d\n", max_pa);
-	while (size > 0 && pa_count < max_pa)
+	//ft_printf("B = ");
+	//print_stack(*b);
+	while (size > 0 && pa_count < size / 2)
 	{
 		if ((*b)->content > median)
 			pa_count += pa(a, b);
@@ -64,11 +65,11 @@ void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
 			rb_count += rb(b);
 		size--;
 	}
+	while (rb_count > 0 && int_lstsize(sub_stacks[1]) > 1)
+		rb_count -= rrb(b);
 	sub_stacks[0]->content = pa_count;
-	//print_stacks_both(*a, *b);
-	sort_b_sub_stack(b, sub_stacks, rb_count, pa_count);
+	sub_stacks[1]->content -= pa_count;
 	sort_a_sub_stack(a, b, sub_stacks);
-
 }
 
 void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks)
@@ -76,10 +77,6 @@ void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	while (sub_stacks[0]->content > 3)
 		merge_sort_atob(a, b, sub_stacks, true);
 	sort_a_sub_stack(a, b, sub_stacks);
-	//if (int_lstsize(*a) ==2)
-	//	sort_a_top2(a);
-	//else if (int_lstsize(*a) ==3)
-	//	sort_a_top3(a);
 	while (*b)
 	{
 		if ((sub_stacks[1])->content == 1)

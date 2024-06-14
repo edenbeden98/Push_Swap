@@ -15,15 +15,13 @@
 void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
 {
 	int	size;
-	int	pb_count;
 
-	size = sub_stacks[0]->content;
-	pb_count = find_pb_count(a, sub_stacks);
-	if (/*pa_count < 1 || */pb_count <= 1)
+	size = find_unordered_count(a, sub_stacks);
+	if (size <= 1)
 		return ;
-	else if (pb_count == 2)
-		ss(*a, *b);
-	else if (pb_count == 3)
+	else if (size == 2)
+		sa(*a);
+	else if (size == 3)
 		sort_a_top3(a);
 	else
 	{
@@ -36,11 +34,11 @@ void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	}
 }
 
-void	sort_b_sub_stack(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count)
+void	sort_b_sub_stack(int_lst **b, int_lst **sub_stacks, int rb_count)
 {
 	while (rb_count > 0 && int_lstsize(sub_stacks[1]) > 1)
 		rb_count -= rrb(b);
-	sub_stacks[1]->content -= pa_count;
+	sub_stacks[1]->content -= sub_stacks[0]->content;
 }
 
 void	push_swap(int_lst **a)
