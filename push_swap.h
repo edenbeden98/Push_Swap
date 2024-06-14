@@ -44,7 +44,7 @@ int		rrr(int_lst **A, int_lst **B);
 
 int		find_median(int_lst *X, int size);
 
-int		find_pb_count(int_lst **a, int pa_count);
+int		find_pb_count(int_lst **a, int_lst **sub_stacks);
 
 int		find_max_pb(int size);
 
@@ -72,13 +72,13 @@ void	sort_b_top2(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-void	sort_a(int_lst **a, int_lst **b, int_lst **sub_stacks, int pa_count);
+void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
-void	sort_b(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count);
+void	sort_b_sub_stack(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count);
 
 void	push_swap(int_lst **a);
 
-void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks);
+void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_merge);
 
 void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks);
 

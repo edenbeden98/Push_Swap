@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void	sort_a(int_lst **a, int_lst **b, int_lst **sub_stacks, int pa_count)
+void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
 {
 	int	size;
 	int	pb_count;
 
-	size = sub_stacks[1]->content;
-	pb_count = find_pb_count(a, pa_count);
-	if (pa_count < 1 || pb_count <= 1)
+	size = sub_stacks[0]->content;
+	pb_count = find_pb_count(a, sub_stacks);
+	if (/*pa_count < 1 || */pb_count <= 1)
 		return ;
 	else if (pb_count == 2)
 		ss(*a, *b);
@@ -27,9 +27,8 @@ void	sort_a(int_lst **a, int_lst **b, int_lst **sub_stacks, int pa_count)
 		sort_a_top3(a);
 	else
 	{
-		sub_stacks[0]->content = pb_count;
 		while (sub_stacks[0]->content > 3)
-			merge_sort_atob(a, b, sub_stacks);
+			merge_sort_atob(a, b, sub_stacks, false);
 		if (sub_stacks[0]->content == 3)
 			sort_a_top3(a);
 		else if (sub_stacks[0]->content == 2)
@@ -37,14 +36,11 @@ void	sort_a(int_lst **a, int_lst **b, int_lst **sub_stacks, int pa_count)
 	}
 }
 
-void	sort_b(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count)
+void	sort_b_sub_stack(int_lst **b, int_lst **sub_stacks, int rb_count, int pa_count)
 {
-	int	prev_sub_stack_size;
-
-	prev_sub_stack_size = sub_stacks[1]->content;
 	while (rb_count > 0 && int_lstsize(sub_stacks[1]) > 1)
 		rb_count -= rrb(b);
-	sub_stacks[1]->content = prev_sub_stack_size - pa_count;
+	sub_stacks[1]->content -= pa_count;
 }
 
 void	push_swap(int_lst **a)
@@ -58,7 +54,6 @@ void	push_swap(int_lst **a)
 	*b = NULL;
 	sub_stacks[0] = int_lstnew(int_lstsize(*a));
 	sub_stacks[1] = NULL;
-	split_atob(a, b, sub_stacks);
 	merge_sort(a, b, sub_stacks);
 	print_stacks_both(*a, *b);
 	int_lstclear(&sub_stacks[0]);
