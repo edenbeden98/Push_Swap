@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_arrlcpy.c                                      :+:      :+:    :+:   */
+/*   int_lstdel_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 16:53:49 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/16 16:53:54 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/16 17:07:03 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/16 17:07:04 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h> 
 
-int	*int_arrlcpy(int *dest, int *src, int size)
+void	int_lstdel_front(t_int_lst **lst)
 {
-	int	i;
-	int	*tmp;
+	t_int_lst	*tmp;
 
-	if (!src || !dest)
-		return (NULL);
-	i = 0;
-	tmp = dest;
-	while (i < size)
+	if (*lst)
 	{
-		*tmp = *src;
-		tmp++;
-		src++;
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+		if (*lst)
+			(*lst)->prev = NULL;
+		else
+			*lst = NULL;
 	}
-	return (dest);
 }

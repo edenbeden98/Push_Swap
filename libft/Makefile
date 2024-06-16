@@ -73,7 +73,13 @@ SRCS =	ft_atoi.c \
 		int_arrlcpy.c \
 		int_arrtrunc.c \
 		int_lst_to_arr.c \
-		int_lst_fns.c \
+		int_lstnew.c \
+		int_lstadd_back.c \
+		int_lstadd_front.c \
+		int_lstdel_front.c \
+		int_lstlast.c \
+		int_lstsize.c \
+		int_lstclear.c \	
 		ft_swap.c \
 		bubble_sort.c \
 		ft_issign.c

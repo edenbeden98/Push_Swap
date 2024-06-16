@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_unordered_count(int_lst **a, int_lst **sub_stacks)
+int	find_unordered_count(t_int_lst **a, t_int_lst **sub_stacks)
 {
 	int	*arr;
 	int	*sorted_arr;
@@ -39,7 +39,7 @@ int	find_unordered_count(int_lst **a, int_lst **sub_stacks)
 	return (i + 1);
 }
 
-int	find_median(int_lst *x, int size)
+int	find_median(t_int_lst *x, int size)
 {
 	int	median;
 	int	arr[1000];

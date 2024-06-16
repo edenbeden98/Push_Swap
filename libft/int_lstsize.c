@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_arrlcpy.c                                      :+:      :+:    :+:   */
+/*   int_lstsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 16:53:49 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/16 16:53:54 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/16 17:07:28 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/16 17:07:29 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h> 
 
-int	*int_arrlcpy(int *dest, int *src, int size)
+int	int_lstsize(t_int_lst *lst)
 {
-	int	i;
-	int	*tmp;
+	int	size;
 
-	if (!src || !dest)
-		return (NULL);
-	i = 0;
-	tmp = dest;
-	while (i < size)
+	size = 0;
+	while (lst)
 	{
-		*tmp = *src;
-		tmp++;
-		src++;
+		lst = lst->next;
+		size++;
 	}
-	return (dest);
+	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:54:38 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/12 16:19:45 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/06/16 16:51:48 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	rev_bubble_sort_arr(int *arr, int size)
 			break ;
 	}
 }
-
 
 void	bubble_sort_arr(int *arr, int size)
 {

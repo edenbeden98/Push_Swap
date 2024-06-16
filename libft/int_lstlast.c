@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_arrlcpy.c                                      :+:      :+:    :+:   */
+/*   int_lstlast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 16:53:49 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/16 16:53:54 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/16 17:07:37 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/16 17:07:38 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h> 
 
-int	*int_arrlcpy(int *dest, int *src, int size)
+t_int_lst	*int_lstlast(t_int_lst *lst)
 {
-	int	i;
-	int	*tmp;
-
-	if (!src || !dest)
-		return (NULL);
-	i = 0;
-	tmp = dest;
-	while (i < size)
-	{
-		*tmp = *src;
-		tmp++;
-		src++;
-	}
-	return (dest);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

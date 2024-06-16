@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	print_stack(int_lst *X)
+void	print_stack(t_int_lst *X)
 {
 	while (X)
 	{
@@ -22,7 +22,7 @@ void	print_stack(int_lst *X)
 	ft_printf("\n");
 }
 
-void	print_stacks_both(int_lst *A, int_lst *B)
+void	print_stacks_both(t_int_lst *A, t_int_lst *B)
 {
 	ft_printf("A = ");
 	print_stack(A);

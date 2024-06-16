@@ -12,37 +12,37 @@
 
 #include "push_swap.h"
 
-int	pa(int_lst **A, int_lst **B)
+int	pa(t_int_lst **a, t_int_lst **b)
 {
-	int_lst	*tmp;
+	t_int_lst	*tmp;
 
-	if (*B)
+	if (*b)
 	{
-		if ((*B)->next)
-			tmp = (*B)->next;
+		if ((*b)->next)
+			tmp = (*b)->next;
 		else
 			tmp = NULL;
-		(*B)->next = (*A);
-		(*A) = (*B);
-		(*B) = tmp;
+		(*b)->next = (*a);
+		(*a) = (*b);
+		(*b) = tmp;
 		ft_printf("pa\n");
 	}
 	return (1);
 }
 
-int	pb(int_lst **A, int_lst **B)
+int	pb(t_int_lst **a, t_int_lst **b)
 {
-	int_lst	*tmp;
+	t_int_lst	*tmp;
 
-	if (*A)
+	if (*a)
 	{
-		if ((*A)->next)
-			tmp = (*A)->next;
+		if ((*a)->next)
+			tmp = (*a)->next;
 		else
 			tmp = NULL;
-		(*A)->next = (*B);
-		(*B) = (*A);
-		(*A) = tmp;
+		(*a)->next = (*b);
+		(*b) = (*a);
+		(*a) = tmp;
 		ft_printf("pb\n");
 	}
 	return (1);

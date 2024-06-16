@@ -12,29 +12,41 @@
 
 #include "push_swap.h"
 
-
-void	push_swap(int_lst **a)
+void	free_mem(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
-	int_lst	**b;
-	int_lst	*sub_stacks[2];
-
-	b = malloc(sizeof(int_lst *));
-	if (!b)
-		return ;
-	*b = NULL;
-	sub_stacks[0] = int_lstnew(int_lstsize(*a));
-	sub_stacks[1] = NULL;
-	merge_sort(a, b, sub_stacks);
-	print_stacks_both(*a, *b);
 	int_lstclear(&sub_stacks[0]);
 	int_lstclear(&sub_stacks[1]);
+	int_lstclear(a);
 	int_lstclear(b);
+	free(a);
 	free(b);
 }
 
-void	read_input_to_stack(int_lst **a, int argc, char ** argv)
+void	push_swap(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
-	int_lst	*tmp;
+	while (sub_stacks[0]->content > 3)
+		merge_sort_atob(a, b, sub_stacks);
+	sort_a_sub_stack(a, b, sub_stacks);
+	while (*b)
+	{
+		if ((sub_stacks[1])->content == 1)
+		{
+			pa(a, b);
+			int_lstdel_front(&sub_stacks[1]);
+			continue ;
+		}
+		else if (sub_stacks[1]->content == 2)
+			sort_b_top2(a, b, sub_stacks);
+		else if (sub_stacks[1]->content == 3)
+			sort_b_top3(a, b, sub_stacks);
+		else
+			merge_sort_btoa(a, b, sub_stacks);
+	}
+}
+
+void	read_input_to_stack(t_int_lst **a, int argc, char **argv)
+{
+	t_int_lst	*tmp;
 	int		i;
 
 	i = 1;
@@ -46,22 +58,41 @@ void	read_input_to_stack(int_lst **a, int argc, char ** argv)
 	}
 }
 
+int	initialize_stacks(t_int_lst ***a, t_int_lst ***b)
+{
+	*a = malloc(sizeof(t_int_lst *));
+	if (!a)
+		return (0);
+	*b = malloc(sizeof(t_int_lst *));
+	if (!b)
+	{
+		free(a);
+		return (0);
+	}
+	**a = NULL;
+	**b = NULL;
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	int_lst	**a;
+	t_int_lst	**a;
+	t_int_lst	**b;
+	t_int_lst	*sub_stacks[2];
 
 	if (argc < 2)
 		return (1);
 	if (!check_input(argc, argv))
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (1);
 	}
-	a = malloc(sizeof(int_lst *));
-	if (!a)
+	if (!initialize_stacks(&a, &b))
 		return (1);
 	read_input_to_stack(a, argc, argv);
-	push_swap(a);
-	int_lstclear(a);
-	free(a);
+	sub_stacks[0] = int_lstnew(argc - 1);
+	sub_stacks[1] = NULL;
+	push_swap(a, b, sub_stacks);
+	print_stacks_both(*a, *b);
+	free_mem(a, b, sub_stacks);
 }

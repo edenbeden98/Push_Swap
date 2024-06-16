@@ -138,30 +138,30 @@ int			*int_arrlcpy(int *dest, int *src, int size);
 
 int			*int_arrtrunc(int *src, int size);
 
-typedef struct int_lst
+typedef struct t_int_lst
 {
-	int				content;
-	struct int_lst	*next;
-	struct int_lst	*prev;
-}	int_lst;
+	int					content;
+	struct t_int_lst	*next;
+	struct t_int_lst	*prev;
+}	t_int_lst;
 
-int_lst		*int_lstnew(int content);
+t_int_lst	*int_lstnew(int content);
 
-void		int_lstadd_front(int_lst **lst, int_lst *new);
+void		int_lstadd_front(t_int_lst **lst, t_int_lst *new);
 
-int			int_lstsize(int_lst *lst);
+int			int_lstsize(t_int_lst *lst);
 
-int_lst		*int_lstlast(int_lst *lst);
+t_int_lst	*int_lstlast(t_int_lst *lst);
 
-void		int_lstadd_back(int_lst **lst, int_lst *new);
+void		int_lstadd_back(t_int_lst **lst, t_int_lst *new);
 
-void		int_lstdelone(int_lst *lst);
+void		int_lstdelone(t_int_lst *lst);
 
-void		int_lstdel_front(int_lst **lst);
+void		int_lstdel_front(t_int_lst **lst);
 
-void		int_lstclear(int_lst **lst);
+void		int_lstclear(t_int_lst **lst);
 
-int			*int_lst_to_arr(int_lst *lst, int size);
+int			*int_lst_to_arr(t_int_lst *lst, int size);
 
 void		ft_swap(int *a, int *b);
 

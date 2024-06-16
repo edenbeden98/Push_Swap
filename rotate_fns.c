@@ -13,10 +13,10 @@
 #include "push_swap.h"
 #include "../libft/libft.h"
 
-static void	rotate(int_lst **stack)
+static void	rotate(t_int_lst **stack)
 {
-	int_lst	*first;
-	int_lst	*tmp;
+	t_int_lst	*first;
+	t_int_lst	*tmp;
 
 	if (*stack && (*stack)->next)
 	{
@@ -30,21 +30,21 @@ static void	rotate(int_lst **stack)
 	}
 }
 
-int	ra(int_lst	**a)
+int	ra(t_int_lst	**a)
 {
 	rotate(a);
 	ft_printf("ra\n");
 	return (1);
 }
 
-int	rb(int_lst	**b)
+int	rb(t_int_lst	**b)
 {
 	rotate(b);
 	ft_printf("rb\n");
 	return (1);
 }
 
-int	rr(int_lst **a, int_lst **b)
+int	rr(t_int_lst **a, t_int_lst **b)
 {
 	rotate(a);
 	rotate(b);

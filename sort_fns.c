@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void	sort_a_top2(int_lst **a)
+void	sort_a_top2(t_int_lst **a)
 {
 	if ((*a)->content > (*a)->next->content)
 		sa(*a);
 }
 
-void	sort_a_top3(int_lst **a)
+void	sort_a_top3(t_int_lst **a)
 {
 	int	top;
 	int	mid;
@@ -42,7 +42,7 @@ void	sort_a_top3(int_lst **a)
 		sa(*a);
 }
 
-void	sort_b_top2(int_lst **a, int_lst **b, int_lst **sub_stacks)
+void	sort_b_top2(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	if ((*b)->content < (*b)->next->content)
 		sb(*b);
@@ -51,7 +51,7 @@ void	sort_b_top2(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	int_lstdel_front(&sub_stacks[1]);
 }
 
-void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks)
+void	sort_b_top3(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	int	top;
 	int	mid;
@@ -78,7 +78,7 @@ void	sort_b_top3(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	sort_b_top2(a, b, sub_stacks);
 }
 
-void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
+void	sort_a_sub_stack(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	int	size;
 

@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int	*int_lst_to_arr(int_lst *lst, int size)
+int	*int_lst_to_arr(t_int_lst *lst, int size)
 {
 	int	*arr;
 	int	i;
-	
+
 	if (!lst || !(lst) || size < 0)
 		return (NULL);
 	arr = malloc(sizeof(int) * size);

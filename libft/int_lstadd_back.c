@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_arrlcpy.c                                      :+:      :+:    :+:   */
+/*   int_lstadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 16:53:49 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/16 16:53:54 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/16 17:06:42 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/16 17:06:45 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h> 
 
-int	*int_arrlcpy(int *dest, int *src, int size)
+void	int_lstadd_back(t_int_lst **lst, t_int_lst *new)
 {
-	int	i;
-	int	*tmp;
-
-	if (!src || !dest)
-		return (NULL);
-	i = 0;
-	tmp = dest;
-	while (i < size)
+	if (*lst)
 	{
-		*tmp = *src;
-		tmp++;
-		src++;
+		int_lstlast(*lst)->next = new;
+		new->prev = int_lstlast(*lst);
 	}
-	return (dest);
+	else
+		*lst = new;
 }

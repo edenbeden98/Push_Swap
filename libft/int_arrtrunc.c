@@ -15,9 +15,9 @@
 int	*int_arrtrunc(int *src, int size)
 {
 	int	i;
-	int *tmp;
-	int *new;
-	
+	int	*tmp;
+	int	*new;
+
 	if (!src || size < 0)
 		return (NULL);
 	new = malloc(sizeof(int) * size);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks)
+void	merge_sort_atob(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	int	size;
 	int	median;
@@ -38,7 +38,7 @@ void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	int_lstadd_front(&sub_stacks[1], int_lstnew(pb_count));
 }
 
-void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
+void	merge_sort_btoa(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	int	size;
 	int	median;
@@ -63,24 +63,3 @@ void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	sort_a_sub_stack(a, b, sub_stacks);
 }
 
-void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks)
-{
-	while (sub_stacks[0]->content > 3)
-		merge_sort_atob(a, b, sub_stacks);
-	sort_a_sub_stack(a, b, sub_stacks);
-	while (*b)
-	{
-		if ((sub_stacks[1])->content == 1)
-		{
-			pa(a, b);
-			int_lstdel_front(&sub_stacks[1]);
-			continue ;
-		}
-		else if (sub_stacks[1]->content == 2)
-			sort_b_top2(a, b, sub_stacks);
-		else if (sub_stacks[1]->content == 3)
-			sort_b_top3(a, b, sub_stacks);
-		else
-			merge_sort_btoa(a, b, sub_stacks);
-	}
-}

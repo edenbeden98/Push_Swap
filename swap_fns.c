@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	swap(int_lst *stack)
+static void	swap(t_int_lst *stack)
 {
 	int	tmp;
 
@@ -24,21 +24,21 @@ static void	swap(int_lst *stack)
 	}
 }
 
-int	sa(int_lst *a)
+int	sa(t_int_lst *a)
 {
 	swap(a);
 	ft_printf("sa\n");
 	return (1);
 }
 
-int	sb(int_lst *b)
+int	sb(t_int_lst *b)
 {
 	swap(b);
 	ft_printf("sb\n");
 	return (1);
 }
 
-int	ss(int_lst *a, int_lst *b)
+int	ss(t_int_lst *a, t_int_lst *b)
 {
 	swap(a);
 	swap(b);
