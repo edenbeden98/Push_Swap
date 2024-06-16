@@ -20,7 +20,6 @@ int	find_unordered_count(int_lst **a, int_lst **sub_stacks)
 	int	i;
 
 	size = sub_stacks[0]->content;
-	//ft_printf("size = %d\n", size);
 	arr = int_lst_to_arr(*a, size);
 	if (!arr)
 		return (-1);
@@ -57,13 +56,11 @@ int	find_median(int_lst *x, int size)
 		median = arr[(size / 2) - 1];
 	else
 		median = arr[size / 2];
-	//ft_printf("median = %d\n", median);
 	return (median);
 }
 
 int	find_max_pb(int size)
 {
-	//ft_printf("size = %d\n", size);
 	if (size == 1)
 		return (1);
 	else if (size % 2 == 0)

@@ -36,12 +36,18 @@ int	check_duplicates(int argc, char **argv)
 bool	check_all_integers(int argc, char **argv)
 {
 	int	i;
+	int	j;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_atoi(argv[i]))
-			return (false);
+		j = 0;
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]) && !ft_issign(argv[i][j]))
+				return (false);
+			j++;
+		}
 		i++;
 	}
 	return (true);
@@ -54,7 +60,7 @@ bool	check_int_size(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_atoi(argv[i]))
+		if (!ft_atoi(argv[i]) && *argv[i] != '0')
 			return (false);
 		i++;
 	}

@@ -20,27 +20,27 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-int		ra(int_lst **A);
+int		ra(int_lst **a);
 
-int		rb(int_lst **B);
+int		rb(int_lst **b);
 
-int		rr(int_lst **A, int_lst **B);
+int		rr(int_lst **a, int_lst **b);
 
-int		sa(int_lst *A);
+int		sa(int_lst *a);
 
-int		sb(int_lst *B);
+int		sb(int_lst *b);
 
-int		ss(int_lst *A, int_lst *B);
+int		ss(int_lst *a, int_lst *b);
 
-int		pa(int_lst **A, int_lst **B);
+int		pa(int_lst **a, int_lst **b);
 
-int		pb(int_lst **A, int_lst **B);
+int		pb(int_lst **a, int_lst **b);
 
-int		rra(int_lst **A);
+int		rra(int_lst **a);
 
-int		rrb(int_lst **B);
+int		rrb(int_lst **b);
 
-int		rrr(int_lst **A, int_lst **B);
+int		rrr(int_lst **a, int_lst **b);
 
 int		find_median(int_lst *X, int size);
 
@@ -52,9 +52,7 @@ void	print_int_arr(int *arr, int size); // ADD TO PRINTF
 
 void	print_stack(int_lst *X); // ADD TO PRINTF
 
-void	print_stacks_both(int_lst *A, int_lst *B);
-
-void	print_int_arr(int *arr, int size);
+void	print_stacks_both(int_lst *a, int_lst *b);
 
 bool	check_input(int argc, char **argv);
 
@@ -76,12 +74,10 @@ void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 void	push_swap(int_lst **a);
 
-void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks, bool first_merge);
+void	merge_sort_atob(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 void	merge_sort_btoa(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 void	merge_sort(int_lst **a, int_lst **b, int_lst **sub_stacks);
-
-void	split_atob(int_lst **a, int_lst **b, int_lst **sub_stacks);
 
 #endif

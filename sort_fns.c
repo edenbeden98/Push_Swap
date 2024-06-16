@@ -92,7 +92,7 @@ void	sort_a_sub_stack(int_lst **a, int_lst **b, int_lst **sub_stacks)
 	else
 	{
 		while (sub_stacks[0]->content > 3)
-			merge_sort_atob(a, b, sub_stacks, false);
+			merge_sort_atob(a, b, sub_stacks);
 		if (sub_stacks[0]->content == 3)
 			sort_a_top3(a);
 		else if (sub_stacks[0]->content == 2)

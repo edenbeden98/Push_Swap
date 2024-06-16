@@ -30,56 +30,24 @@ static void	rev_rotate(int_lst **stack)
 	}
 }
 
-int	rra(int_lst **A)
+int	rra(int_lst **a)
 {
-	rev_rotate(A);
+	rev_rotate(a);
 	ft_printf("rra\n");
 	return (1);
 }
 
-int	rrb(int_lst	**B)
+int	rrb(int_lst	**b)
 {
-	rev_rotate(B);
+	rev_rotate(b);
 	ft_printf("rrb\n");
 	return (1);
 }
 
-int	rrr(int_lst **A, int_lst **B)
+int	rrr(int_lst **a, int_lst **b)
 {
-	rev_rotate(A);
-	rev_rotate(B);
+	rev_rotate(a);
+	rev_rotate(b);
 	ft_printf("rrr\n");
 	return (1);
 }
-/*
-int	main(void)
-{
-	int_list	**A;
-	int_list	*tmp;
-	int		i;
-
-	A = malloc(sizeof(int_list *));
-	if (!A)
-		return (0);
-	*A = NULL;
-	i = 0;
-	while (i < 4)
-	{
-		tmp = int_lstnew(i);
-		ft_printf("%d", tmp->content);
-		int_lstadd_back(A, tmp);
-		i++;
-	}
-	ft_printf("\n", 1);
-	rra(A);
-	i = 0;
-	tmp = *A;
-	while (i < 4)
-	{
-		printf("%d", tmp->content);
-		tmp = tmp->next;
-		i++;
-	}
-	int_lstclear(A);
-	free(A);
-}*/

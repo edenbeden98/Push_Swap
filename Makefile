@@ -6,7 +6,7 @@
 #    By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 14:21:39 by eamsalem          #+#    #+#              #
-#    Updated: 2024/06/12 16:25:06 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/06/16 15:36:10 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Werror -Wextra -g3
 OBJDIR = ./build
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
-LIBFTDIR = ../libft
+LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 SRCS =	push_swap.c \
