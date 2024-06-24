@@ -93,6 +93,6 @@ int	main(int argc, char **argv)
 	sub_stacks[0] = int_lstnew(argc - 1);
 	sub_stacks[1] = NULL;
 	push_swap(a, b, sub_stacks);
-	print_stacks_both(*a, *b);
+//	print_stacks_both(*a, *b);
 	free_mem(a, b, sub_stacks);
 }
