@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_mem(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
-{
-	int_lstclear(&sub_stacks[0]);
-	int_lstclear(&sub_stacks[1]);
-	int_lstclear(a);
-	int_lstclear(b);
-	free(a);
-	free(b);
-}
-
 void	push_swap(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 {
 	while (sub_stacks[0]->content > 3)
@@ -44,36 +34,6 @@ void	push_swap(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 	}
 }
 
-void	read_input_to_stack(t_int_lst **a, int argc, char **argv)
-{
-	t_int_lst	*tmp;
-	int		i;
-
-	i = 1;
-	while (i < argc)
-	{
-		tmp = int_lstnew(ft_atoi(argv[i]));
-		int_lstadd_back(a, tmp);
-		i++;
-	}
-}
-
-int	initialize_stacks(t_int_lst ***a, t_int_lst ***b)
-{
-	*a = malloc(sizeof(t_int_lst *));
-	if (!a)
-		return (0);
-	*b = malloc(sizeof(t_int_lst *));
-	if (!b)
-	{
-		free(a);
-		return (0);
-	}
-	**a = NULL;
-	**b = NULL;
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	t_int_lst	**a;
@@ -92,7 +52,9 @@ int	main(int argc, char **argv)
 	read_input_to_stack(a, argc, argv);
 	sub_stacks[0] = int_lstnew(argc - 1);
 	sub_stacks[1] = NULL;
-	push_swap(a, b, sub_stacks);
-//	print_stacks_both(*a, *b);
+	if (!sorted(*a) && int_lstsize(*a) <= 3)
+		simple_sort(a);
+	else if (!sorted(*a))
+		push_swap(a, b, sub_stacks);
 	free_mem(a, b, sub_stacks);
 }

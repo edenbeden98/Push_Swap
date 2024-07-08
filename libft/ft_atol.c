@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 14:26:59 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/15 13:38:28 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/07/08 12:21:18 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/07/08 12:21:20 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int		i;
-	int		sign;
-	int		nbr_int;
+	long		i;
+	long		sign;
+	long		nbr_int;
 
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
@@ -37,14 +37,3 @@ int	ft_atoi(const char *str)
 	}
 	return (nbr_int * sign);
 }
-/*
-#include <stdio.h>
-#include <limits.h>
-
-int	main(void)
-{
-	printf("%d\n", ft_atoi("1"));
-	printf("%d\n", ft_atoi("+42Lyon"));
-	printf("%d\n", ft_atoi("  2147483647"));
-	printf("%d\n", ft_atoi(""));
-}*/

@@ -60,7 +60,7 @@ bool	check_int_size(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_atoi(argv[i]) && *argv[i] != '0')
+		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
 			return (false);
 		i++;
 	}

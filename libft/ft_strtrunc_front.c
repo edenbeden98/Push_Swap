@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strtrunc_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 13:37:18 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/14 13:37:19 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/07/07 15:41:43 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/07/07 15:44:23 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	*ft_strtrunc_front(char *str, unsigned int chr_count)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	char			*trunc_str;
+	unsigned int	i;
+	unsigned int	j;
+
+	if (chr_count > ft_strlen(str) || chr_count == 0 || !str)
+		return (NULL);
+	trunc_str = malloc(sizeof(char) * (ft_strlen(str) - chr_count + 1));
+	i = chr_count;
+	j = 0;
+	while (str[i])
+		trunc_str[j++] = str[i++];
+	trunc_str[j] = '\0';
+	free (str);
+	return (trunc_str);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%c\n", ft_toupper('a'));
-	printf("%c\n", ft_toupper('A'));
-
-}*/

@@ -17,8 +17,10 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include <stddef.h> 
 # include <stdlib.h> 
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 int			ft_isalpha(char c);
 
@@ -168,5 +170,15 @@ void		ft_swap(int *a, int *b);
 void		bubble_sort_arr(int *arr, int size);
 
 void		rev_bubble_sort_arr(int *arr, int size);
+
+void		free_2d_arr(void **arr, int len);
+
+int			ft_2d_arrlen(void **arr);
+
+char		*get_next_line(int fd);
+
+char		*ft_strtrunc_front(char *str, unsigned int chr_count);
+
+long		ft_atol(const char *str);
 
 #endif

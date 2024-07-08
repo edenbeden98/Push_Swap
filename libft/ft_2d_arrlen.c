@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_2d_arrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 13:37:18 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/14 13:37:19 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/24 16:23:14 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/24 16:24:18 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_2d_arrlen(void **arr)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	int	size;
+
+	size = 0;
+	while (arr[size])
+		size++;
+	return (size);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%c\n", ft_toupper('a'));
-	printf("%c\n", ft_toupper('A'));
-
-}*/

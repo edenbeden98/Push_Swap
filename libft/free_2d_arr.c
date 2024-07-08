@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   free_2d_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 13:37:18 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/14 13:37:19 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/24 16:23:04 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/24 16:23:57 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	free_2d_arr(void **arr, int len)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	int	i;
+
+	i = 0;
+	while (i < len)
+		free(arr[i++]);
+	free(arr);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%c\n", ft_toupper('a'));
-	printf("%c\n", ft_toupper('A'));
-
-}*/

@@ -62,4 +62,3 @@ void	merge_sort_btoa(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks)
 	sub_stacks[1]->content -= pa_count;
 	sort_a_sub_stack(a, b, sub_stacks);
 }
-

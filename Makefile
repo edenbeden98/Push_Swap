@@ -29,7 +29,9 @@ SRCS =	push_swap.c \
 		print_fns.c \
 		find_fns.c \
 		merge_sort_fns.c \
-		check_fns.c
+		check_fns.c \
+		simple_sort.c \
+		utils.c
 
 all: $(OBJDIR) $(NAME) $(LIBFT)
 

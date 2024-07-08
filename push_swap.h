@@ -14,11 +14,12 @@
 
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 
 int		ra(t_int_lst **a);
 
@@ -48,9 +49,9 @@ int		find_unordered_count(t_int_lst **a, t_int_lst **sub_stacks);
 
 int		find_max_pb(int size);
 
-void	print_int_arr(int *arr, int size); // ADD TO PRINTF
+void	print_int_arr(int *arr, int size);
 
-void	print_stack(t_int_lst *X); // ADD TO PRINTF
+void	print_stack(t_int_lst *X);
 
 void	print_stacks_both(t_int_lst *a, t_int_lst *b);
 
@@ -77,5 +78,19 @@ void	push_swap(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks);
 void	merge_sort_atob(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks);
 
 void	merge_sort_btoa(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks);
+
+bool	sorted(t_int_lst *a);
+
+void	simple_sort(t_int_lst **a);
+
+void	simple_sort_3(t_int_lst **a);
+
+void	free_mem(t_int_lst **a, t_int_lst **b, t_int_lst **sub_stacks);
+
+void	read_input_to_stack(t_int_lst **a, int argc, char **argv);
+
+int		initialize_stacks(t_int_lst ***a, t_int_lst ***b);
+
+bool	sorted(t_int_lst *a);
 
 #endif
