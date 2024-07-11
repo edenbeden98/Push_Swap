@@ -1,3 +1,4 @@
-print_fns.c
+/build
 /build/*
 push_swap
+checker_linux
