@@ -61,7 +61,7 @@ bool	check_int_size(int argc, char **argv);
 
 bool	check_all_integers(int argc, char **argv);
 
-int		check_duplicates(int argc, char **argv);
+bool	check_duplicates(int argc, char **argv);
 
 void	sort_a_top2(t_int_lst **a);
 

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	check_duplicates(int argc, char **argv)
+bool	check_duplicates(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -26,11 +26,14 @@ int	check_duplicates(int argc, char **argv)
 	while (i < argc)
 	{
 		if (intsetcmp(ft_atoi(argv[i]), set, j))
-			return (0);
+		{
+			free(set);
+			return (false);
+		}
 		set[j++] = ft_atoi(argv[i++]);
 	}
 	free(set);
-	return (1);
+	return (true);
 }
 
 bool	check_all_integers(int argc, char **argv)
